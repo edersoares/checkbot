@@ -19,4 +19,22 @@ class Url extends Model
             self::STATUS_QUARANTINE,
         ];
     }
+
+    public function getStatusText()
+    {
+        switch ($this->status) {
+
+            case self::STATUS_OPENED:
+                return 'Aberto';
+
+            case self::STATUS_NOTIFIED:
+                return 'Notificado';
+
+            case self::STATUS_CLOSED:
+                return 'Fechado';
+
+            case self::STATUS_QUARANTINE:
+                return 'Quarentena';
+        }
+    }
 }
