@@ -39,6 +39,8 @@ class CheckIfUrlIsOnlineJob implements ShouldQueue
      */
     public function handle(Client $client)
     {
+        // TODO tratar erros de DNS
+        
         $response = $client->get($this->url->host, [
             'http_errors' => false
         ]);
