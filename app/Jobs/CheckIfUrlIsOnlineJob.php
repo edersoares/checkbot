@@ -47,6 +47,16 @@ class CheckIfUrlIsOnlineJob implements ShouldQueue
         $headers = $response->getHeaders();
         $body = $response->getBody()->getContents();
 
+        if (in_array($this->url->status, Url::getStatusToCheck()) && $status >= 400) {
+            $this->url->status = Url::STATUS_QUARANTINE;
+            $this->url->save();
+        }
+
+        if ($this->url->status == Url::STATUS_QUARANTINE && $status < 400) {
+            $this->url->status = Url::STATUS_OPENED;
+            $this->url->save();
+        }
+
         UrlHistory::create([
             'url_id' => $this->url->id,
             'status' => $status,
