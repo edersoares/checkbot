@@ -15,6 +15,7 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('schedule', 'ScheduleController@selectUrlsToCheck');
 Route::get('urls', 'UrlController@index')->name('url.index');
 Route::get('urls/create', 'UrlController@create')->name('url.create');
 Route::post('urls', 'UrlController@save')->name('url.save');
