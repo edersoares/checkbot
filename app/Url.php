@@ -11,6 +11,10 @@ class Url extends Model
     const STATUS_CLOSED = 3;
     const STATUS_QUARANTINE = 4;
 
+    protected $fillable = [
+        'host', 'available_at', 'status', 'port'
+    ];
+
     public static function getStatusToCheck()
     {
         return [

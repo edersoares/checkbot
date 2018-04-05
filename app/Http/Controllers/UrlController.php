@@ -13,4 +13,22 @@ class UrlController extends Controller
             'urls' => Url::all()
         ]);
     }
+
+    public function create()
+    {
+        return view('url.create');
+    }
+
+    public function save(Request $request)
+    {
+        $request->merge([
+            'available_at' => now(),
+            'status' => Url::STATUS_OPENED,
+            'port' => 80,
+        ]);
+
+        Url::create($request->all());
+
+        return redirect()->route('url.index');
+    }
 }
