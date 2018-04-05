@@ -25,11 +25,12 @@ touch database/database.sqlite
 # Gera a chave de encriptação da aplicação
 php artisan key:generate
 
-# Tabelas para a worker
-php artisan queue:table
-php artisan queue:failed-table
-
 # Migração do banco de dados
 php artisan migrate --force
 
+# Executar o servidor HTTP
+php artisan serve
+
+# Executar o worker (fila)
+php artisan queue:work --tries=3
 ```
