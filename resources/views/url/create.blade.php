@@ -1,5 +1,7 @@
 @extends('layout')
 
+@section('title', 'Create - URLs')
+
 @section('content')
 
     <form action="{{ route('url.save') }}" method="post">

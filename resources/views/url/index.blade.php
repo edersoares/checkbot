@@ -1,5 +1,7 @@
 @extends('layout')
 
+@section('title', 'URLs')
+
 @section('content')
 
     <table class="table">
